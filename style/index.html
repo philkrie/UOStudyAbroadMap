@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>style</title>
+	<style>
+		*{
+			padding: 0px;
+			margin:0px;
+			font-family: 'open sans';
+			max-height: 100%;
+		}
+		body{
+			font-size:16px;
+			overflow: hidden;
+		}
+		p{
+			font-size: 12px;
+			line-height: 20px;
+			font-weight: 100;
+		}
+		aside{
+			display: inline-block;
+			width: 25%;
+			/*max-width: 500px;*/
+			min-width: 300px;
+			margin:2rem;
+			overflow: hidden;;
+			box-sizing:border-box;
+		}
+		.data{
+			color:white;
+		}
+		h2{
+			line-height: 2rem;
+			/*margin-bottom: 1rem;*/
+		}
+		h3{
+			line-height: 3rem;
+			font-weight: 400;
+		}
+		a{
+			color:green;
+			text-decoration: none;
+		}
+		.close{
+			float:right;
+			display: inline-block;
+			/*position: relative;*/
+			/*top: 80%;*/
+			transform: translateY(25%);
+			color:black;
+		}
+
+		.card{
+			background: white;
+			box-sizing:border-box;
+		}
+		.card.inverted{
+			background: rgba(0,0,0,.9);
+			color:white;
+		}
+		.card h1, .card h2, .card h3, .card h4, .card h5, .card h6{
+			color:yellow;
+		}
+		.card-header h1, .card-header h2, .card-header h3, .card-header h4, .card-header h5, .card-header h6{
+			color:black;
+			float:left;
+		}
+		.card-header{
+			background: yellow;
+			overflow: auto;
+			clear:both;
+		}
+		.card-header, .card-content{
+			padding:.5rem 1.5rem;
+		}
+
+		.card-content{
+			max-height: 80.5vh;
+			overflow: scroll;
+		}
+
+		.card-content section{
+			padding: 1rem 0rem;
+		}
+		
+
+		.researchers-header{
+			text-align: center;
+		}
+		.researchers-list{
+			position: relative;
+		}
+		.researchers-list ul{
+			display: inline-block;
+			width: 100%;
+			box-sizing:border-box;
+			margin-bottom: 1rem;
+
+		}
+		.researchers-list li{
+			display: inline-block;
+		}
+		.researchers-list .researcher{
+			border-radius: 100%;
+			display: inline-block;
+			overflow: hidden;
+			/*position: relative;
+			top: 50%;
+			transform: translateY(-50%);*/
+		}
+		.researchers-list .researcher.flank{
+			position: relative;
+			width:20%;
+			transform: translateY(-20%);
+		}
+		.researchers-list .researcher.flank-secondary{
+			position: relative;
+			width:10%;
+			transform: translateY(-90%);
+		}
+		.researchers-list .researcher.active{
+			border:2px solid yellow;
+			width:30%;
+			box-shadow:2px 2px 10px black;
+		}
+		.researchers-list .researcher img{
+			display: block;
+		    max-width: 100%;
+		    max-height: 100%;
+		    width: auto;
+		    height: auto;
+		}
+		.researcher-selected-info .name{
+			text-align: center;
+		}
+		
+		.internationalStudents, .studyAbroadPrograms{
+			clear:both;
+		}
+		.internationalStudents img, .studyAbroadPrograms img{
+			border-radius: 100%;
+			display: inline-block;
+			overflow: hidden;
+			width:20%;	
+		}
+		.internationalStudents img{
+			float:left;
+			margin-right:1rem;
+		}
+		.studyAbroadPrograms img{
+			float:right;
+			margin-left:1rem;
+		}
+
+	</style>
+</head>
+<body>
+	<aside>
+		<div class="card inverted">
+			<div class="card-header">
+				<h1>china</h1>
+				<span class="close">x</span>
+			</div>
+			<div class="card-content">
+				<div class="researchers">
+					<h2 class="researchers-header">
+						Researchers: <span class="data">23</span>	
+					</h2>
+					<section class="researchers-list">
+						<ul>
+							<li class="researcher flank-secondary">
+								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+							</li>
+							<li class="researcher flank">
+								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+							</li>
+							<li class="researcher active">
+								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+							</li>
+							<li class="researcher flank">
+								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+							</li>
+							<li class="researcher flank-secondary">
+								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+							</li>
+						</ul>
+						<div class="researcher-selected-info">
+							<div class="name">
+								<h3>Ina Asim</h3>
+							</div>
+							<div class="bio">
+								<p>
+									Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit cum maiores non numquam soluta provident aliquam ipsam, perferendis dolore ex ea impedit voluptatem, adipisci beatae consequuntur eveniet mollitia architecto nisi!
+								</p>
+								<a href="#">readmore</a>
+							</div>
+						</div>
+					</section>
+					<section class="internationalStudents">
+						<h3>International Students <span class="data">2,000</span></h3>
+						<p>
+						<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae, veniam magnam qui neque cum ea velit porro autem earum. A illum numquam praesentium id deserunt quis, voluptatem error aut.</p>
+					</section>
+					<section class="studyAbroadPrograms">
+						<h3>Study abroad programs <span class="data">6</span></h3>
+						<p>
+						<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae, veniam magnam qui neque cum ea velit porro autem earum. A illum numquam praesentium id deserunt quis, voluptatem error aut.
+						
+						</p>
+					</section>
+				</div>
+			</div>
+			<br>
+		</div>
+	</aside>
+</body>
+</html>
