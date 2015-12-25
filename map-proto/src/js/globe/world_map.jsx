@@ -21,6 +21,10 @@ var WebGLGlobe = React.createClass({
       UO Study Abroad Map
       </div>
 
+      <div id="overlay">
+      
+      </div>
+
       </div>
     );
   },
