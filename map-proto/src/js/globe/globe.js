@@ -22,8 +22,9 @@ var base_globe = 0;
 var intersected_object = 0;
 var overlay_element = 0;
 var hover_scale = 1.01;
+var flag = true;
 
-DAT.Globe = function(container, opts) {
+DAT.Globe = function(container, opts, callback) {
   "use strict";
   opts = opts || {};
 
@@ -156,7 +157,7 @@ DAT.Globe = function(container, opts) {
 
     document.addEventListener('keydown', onDocumentKeyDown, false);
 
-    document.addEventListener('mousedown', onDocumentMouseMove, false);
+    document.addEventListener('mouseup', onDocumentMouseMove, false);
 
     window.addEventListener('resize', onWindowResize, false);
 
@@ -172,48 +173,55 @@ DAT.Globe = function(container, opts) {
 
   function onDocumentMouseMove(event) {
     "use strict";
-    if (intersected_object !== 0) {
-        intersected_object.scale.set(1.0, 1.0, 1.0);
-        var color = new THREE.Color(0xff0000);
-        color.setHSL(2 * (1 / 7), Math.random() * 0.25 + 0.65, Math.random() / 2 + 0.25);
-        intersected_object.material.color = color;
-        intersected_object.material.needsUpdate = true;
-    }
+    if(flag){
 
-    event.preventDefault();
-    var mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-    var mouseY = -(event.clientY / window.innerHeight) * 2 + 1;
-    var vector = new THREE.Vector3(mouseX, mouseY, -1);
-    vector.unproject(camera);
-    var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
-    var intersects = raycaster.intersectObject(base_globe, true);
-    if (intersects.length > 0) {
-        if (intersects[0].point !== null) {
-            if (intersects[0].object.name === "land") {
-                console.log(intersects[0].object.userData.country);
-
-                if (overlay_element === 0) {
-                    overlay_element = document.getElementById("overlay");
-                }
-                overlay_element.innerHTML = intersects[0].object.userData.country;
-
-                intersects[0].object.scale.set(hover_scale, hover_scale, hover_scale);
-                intersects[0].object.material.color = new THREE.Color( 0xffff00 );  
-                intersects[0].object.material.needsUpdate = true;
-                intersected_object = intersects[0].object;
-            } else {
-                overlay_element.innerHTML = "";
-            }
-        } else {
-            overlay_element.innerHTML = "";
-        }
     } else {
-            overlay_element.innerHTML = "";
+
+      if (intersected_object !== 0) {
+          intersected_object.scale.set(1.0, 1.0, 1.0);
+          var color = new THREE.Color(0xff0000);
+          color.setHSL(2 * (1 / 7), Math.random() * 0.25 + 0.65, Math.random() / 2 + 0.25);
+          intersected_object.material.color = color;
+          intersected_object.material.needsUpdate = true;
+      }
+
+      event.preventDefault();
+      var mouseX = ( ( event.clientX - renderer.domElement.offsetLeft ) / renderer.domElement.width ) * 2 - 1;
+      var mouseY = - ( ( event.clientY - renderer.domElement.offsetTop ) / renderer.domElement.height ) * 2 + 1;
+      var vector = new THREE.Vector3(mouseX, mouseY, -1);
+      vector.unproject(camera);
+      var raycaster = new THREE.Raycaster(camera.position, vector.sub(camera.position).normalize());
+      var intersects = raycaster.intersectObject(base_globe, true);
+      if (intersects.length > 0) {
+          if (intersects[0].point !== null) {
+              if (intersects[0].object.name === "land") {
+                  console.log(intersects[0].object.userData.country);
+
+                  if (overlay_element === 0) {
+                      overlay_element = document.getElementById("overlay");
+                  }
+                  callback(intersects[0].object.userData.country);
+
+                  intersects[0].object.scale.set(hover_scale, hover_scale, hover_scale);
+                  intersects[0].object.material.color = new THREE.Color( 0xffff00 );  
+                  intersects[0].object.material.needsUpdate = true;
+                  intersected_object = intersects[0].object;
+              } else {
+                  overlay_element.innerHTML = "";
+              }
+          } else {
+              overlay_element.innerHTML = "";
+          }
+      } else {
+              overlay_element.innerHTML = "";
+      }
     }
   }
 
   function onMouseDown(event) {
     event.preventDefault();
+
+    flag = false;
 
     container.addEventListener('mousemove', onMouseMove, false);
     container.addEventListener('mouseup', onMouseUp, false);
@@ -231,6 +239,8 @@ DAT.Globe = function(container, opts) {
   function onMouseMove(event) {
     mouse.x = - event.clientX;
     mouse.y = event.clientY;
+
+    flag = true;
 
     var zoomDamp = distance/1000;
 

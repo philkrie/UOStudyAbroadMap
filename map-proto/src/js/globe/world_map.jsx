@@ -41,27 +41,9 @@ var WebGLGlobe = React.createClass({
       // var container = document.getElementById('container');
 
       var opts = {imgDir: 'assets/'};
-      var globe = new DAT.Globe(container, opts);
-      var i, tweens = [];
-
-      var xhr;
-      TWEEN.start();
-
-
-      xhr = new XMLHttpRequest();
-      xhr.open('GET', 'assets/population909500.json', true);
-      var onreadystatechangecallback = function(e) {
-        if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-            var data = JSON.parse(xhr.responseText);
-            window.data = data;
-            globe.animate();
-            document.body.style.backgroundImage = 'none'; // remove loading
-          }
-        }
-      };
-      xhr.onreadystatechange = onreadystatechangecallback.bind(this);
-      xhr.send(null);
+      var globe = new DAT.Globe(container, opts, this.props.changeCountry);
+      globe.animate();
+      
     }
 
   }
