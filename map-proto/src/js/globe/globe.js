@@ -20,7 +20,6 @@ var radius = 0.955;
 var base_globe = 0;
 
 var intersected_object = 0;
-var overlay_element = 0;
 var hover_scale = 1.01;
 var flag = true;
 
@@ -197,9 +196,7 @@ DAT.Globe = function(container, opts, callback) {
               if (intersects[0].object.name === "land") {
                   console.log(intersects[0].object.userData.country);
 
-                  if (overlay_element === 0) {
-                      overlay_element = document.getElementById("overlay");
-                  }
+            
                   callback(intersects[0].object.userData.country);
 
                   intersects[0].object.scale.set(hover_scale, hover_scale, hover_scale);
@@ -207,13 +204,13 @@ DAT.Globe = function(container, opts, callback) {
                   intersects[0].object.material.needsUpdate = true;
                   intersected_object = intersects[0].object;
               } else {
-                  overlay_element.innerHTML = "";
+                  callback(null);
               }
           } else {
-              overlay_element.innerHTML = "";
+              callback(null);
           }
       } else {
-              overlay_element.innerHTML = "";
+              callback(null);
       }
     }
   }
