@@ -12,7 +12,7 @@
 		}
 		body{
 			font-size:16px;
-			overflow: hidden;
+			/*overflow: hidden;*/
 		}
 		p{
 			font-size: 12px;
@@ -125,39 +125,94 @@
 			width:30%;
 			box-shadow:2px 2px 10px black;
 		}
-		.researchers-list .researcher img{
+		.researchers-list .researcher img
+		{
 			display: block;
 		    max-width: 100%;
 		    max-height: 100%;
 		    width: auto;
 		    height: auto;
 		}
-		.researcher-selected-info .name{
+		.researcher-info .name{
 			text-align: center;
 		}
 		
-		.internationalStudents, .studyAbroadPrograms{
+		.infoPannel{
 			clear:both;
 		}
-		.internationalStudents img, .studyAbroadPrograms img{
+		.infoPannel img{
 			border-radius: 100%;
 			display: inline-block;
 			overflow: hidden;
 			width:20%;	
 		}
-		.internationalStudents img{
+		.infoPannel.left img{
 			float:left;
 			margin-right:1rem;
 		}
-		.studyAbroadPrograms img{
+		.infoPannel.right img{
 			float:right;
 			margin-left:1rem;
 		}
+		.slick-center h3{
+			display: none;
+		}
+
+		#slider{
+			overflow: hidden;
+			position: relative;
+			height: 200px;
+			padding:0px;
+			margin:0px;
+		}
+		#slider li{
+			display: inline-block;
+			border-radius: 100%;
+			overflow: hidden;
+			height: 100%;
+		}
+		#slider li img{
+			height: 100%;
+		}
+		#slider ul{
+			height: 200px;
+			overflow: hidden;
+			width: 10000%;
+			position: absolute;
+			left:0px;
+			top:0px;
+			transition: left .5s;
+			list-style: none;
+		}
+		ul:hover{
+			left:200px;
+		}
+		#slider .previous, #slider .next{
+			display: inline-block;
+			height: 100%;
+			/*line-height: 200px;*/
+			width:4rem;
+			background: rgba(200,0,0,0.5);
+			position: absolute;
+			top:0px;
+			z-index: 2;
+		}
+		#slider .previous{
+			left:0px;
+		}
+		#slider .next{
+			right:0px;
+		}
+
 
 	</style>
+	<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick.css">
+	<link rel="stylesheet" href="bower_components/slick-carousel/slick/slick-theme.css">
 </head>
 <body>
-	<div id="container"></div>
+	<aside>
+		<div id="container"></div>
+	</aside>
 	<aside>
 		<div class="card inverted">
 			<div class="card-header">
@@ -187,7 +242,7 @@
 								<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
 							</li>
 						</ul>
-						<div class="researcher-selected-info">
+						<div class="researcher-info">
 							<div class="name">
 								<h3>Ina Asim</h3>
 							</div>
@@ -199,12 +254,12 @@
 							</div>
 						</div>
 					</section>
-					<section class="internationalStudents">
+					<section class="infoPannel left">
 						<h3>International Students <span class="data">2,000</span></h3>
 						<p>
 						<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae, veniam magnam qui neque cum ea velit porro autem earum. A illum numquam praesentium id deserunt quis, voluptatem error aut.</p>
 					</section>
-					<section class="studyAbroadPrograms">
+					<section class="infoPannel right">
 						<h3>Study abroad programs <span class="data">6</span></h3>
 						<p>
 						<img src="http://zblogged.com/wp-content/uploads/2015/11/17.jpg" alt="">
@@ -218,5 +273,6 @@
 		</div>
 	</aside>
 	<script src="js/dist/main.js" ></script>
+	<script src="bower_components/jquery/dist/jquery.min.js" ></script>
 </body>
 </html>

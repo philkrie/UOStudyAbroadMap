@@ -1,14 +1,366 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _createClass = (function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; })();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 var React = require('react');
 var ReactDOM = require('react-dom');
+var foo = 'bar';
 
-ReactDOM.render(React.createElement(
-	'h1',
-	null,
-	'Hello, World '
-), document.getElementById('container'));
+var Slide = (function (_React$Component) {
+	_inherits(Slide, _React$Component);
+
+	function Slide() {
+		_classCallCheck(this, Slide);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(Slide).apply(this, arguments));
+	}
+
+	_createClass(Slide, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'li',
+				null,
+				React.createElement('img', { src: this.props.image })
+			);
+		}
+	}]);
+
+	return Slide;
+})(React.Component);
+
+var Slider = (function (_React$Component2) {
+	_inherits(Slider, _React$Component2);
+
+	function Slider() {
+		var _Object$getPrototypeO;
+
+		var _temp, _this2, _ret;
+
+		_classCallCheck(this, Slider);
+
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this2 = _possibleConstructorReturn(this, (_Object$getPrototypeO = Object.getPrototypeOf(Slider)).call.apply(_Object$getPrototypeO, [this].concat(args))), _this2), _this2.state = {
+			currentSlide: 0,
+			data: [{ id: 0, image: "http://zblogged.com/wp-content/uploads/2015/11/17.jpg" }, { id: 1, image: "http://zblogged.com/wp-content/uploads/2015/11/17.jpg" }, { id: 2, image: "http://zblogged.com/wp-content/uploads/2015/11/17.jpg" }, { id: 4, image: "http://zblogged.com/wp-content/uploads/2015/11/17.jpg" }]
+		}, _temp), _possibleConstructorReturn(_this2, _ret);
+	}
+
+	_createClass(Slider, [{
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			var modify = function modify(modifier) {
+				// mod defined over negitive numbers
+				var n = _this3.state.data.length;
+				var mod = ((_this3.props.i + modifier) % n + n) % n;
+
+				_this3.props.bindActive(mod);
+			};
+			return React.createElement(
+				'section',
+				{ id: 'slider' },
+				React.createElement(
+					'a',
+					{ className: 'previous', onClick: modify.bind(this, -1) },
+					'-'
+				),
+				React.createElement(
+					'ul',
+					{ style: { left: '200' * this.props.i + 'px' } },
+					this.state.data.map(function (v, i) {
+						return React.createElement(Slide, _extends({ key: i }, v));
+					})
+				),
+				React.createElement(
+					'a',
+					{ className: 'next', onClick: modify.bind(this, 1) },
+					'+'
+				)
+			);
+		}
+	}]);
+
+	return Slider;
+})(React.Component);
+
+;
+
+var CardHeader = (function (_React$Component3) {
+	_inherits(CardHeader, _React$Component3);
+
+	function CardHeader() {
+		_classCallCheck(this, CardHeader);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(CardHeader).apply(this, arguments));
+	}
+
+	_createClass(CardHeader, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'card-header' },
+				React.createElement(
+					'h1',
+					null,
+					this.props.title
+				),
+				React.createElement(
+					'span',
+					{ className: 'close', onClick: this.props.close },
+					'x'
+				)
+			);
+		}
+	}]);
+
+	return CardHeader;
+})(React.Component);
+
+var ResearcherInfo = (function (_React$Component4) {
+	_inherits(ResearcherInfo, _React$Component4);
+
+	function ResearcherInfo() {
+		_classCallCheck(this, ResearcherInfo);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ResearcherInfo).apply(this, arguments));
+	}
+
+	_createClass(ResearcherInfo, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				{ className: 'researcher-info' },
+				React.createElement(
+					'div',
+					{ className: 'name' },
+					React.createElement(
+						'h3',
+						null,
+						this.props.data.name
+					)
+				),
+				React.createElement(
+					'div',
+					{ className: 'bio' },
+					React.createElement(
+						'p',
+						null,
+						this.props.data.bio
+					),
+					React.createElement(
+						'a',
+						{ href: '#' },
+						'readmore'
+					)
+				)
+			);
+		}
+	}]);
+
+	return ResearcherInfo;
+})(React.Component);
+
+var ContentSwitch = (function (_React$Component5) {
+	_inherits(ContentSwitch, _React$Component5);
+
+	function ContentSwitch() {
+		_classCallCheck(this, ContentSwitch);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(ContentSwitch).apply(this, arguments));
+	}
+
+	_createClass(ContentSwitch, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'div',
+				null,
+				this.props.children[this.props.active]
+			);
+		}
+	}]);
+
+	return ContentSwitch;
+})(React.Component);
+
+var Researchers = (function (_React$Component6) {
+	_inherits(Researchers, _React$Component6);
+
+	function Researchers() {
+		var _Object$getPrototypeO2;
+
+		var _temp2, _this7, _ret2;
+
+		_classCallCheck(this, Researchers);
+
+		for (var _len2 = arguments.length, args = Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+			args[_key2] = arguments[_key2];
+		}
+
+		return _ret2 = (_temp2 = (_this7 = _possibleConstructorReturn(this, (_Object$getPrototypeO2 = Object.getPrototypeOf(Researchers)).call.apply(_Object$getPrototypeO2, [this].concat(args))), _this7), _this7.state = {
+			active: 0
+		}, _temp2), _possibleConstructorReturn(_this7, _ret2);
+	}
+
+	_createClass(Researchers, [{
+		key: 'render',
+		value: function render() {
+			var _this8 = this;
+
+			var researchers = [{
+				name: "Ina As",
+				bio: "Lorem ipsum dolor sit amet, con numquam soluta provident aliquam ipsam, perferendis dolore ex ea impedit voluptatem, adipisci beatae consequuntur eveniet mollitia architecto nisi!"
+			}, {
+				name: "Rons",
+				bio: "Lctetur adipisicing elit. Fugit cum maiores non numquam soluta provident aliquam ipsam, perferendis dolore ex ea impedit voluptatem, adipisci beatae consequuntur eveniet mollitia architecto nisi!"
+			}];
+			return React.createElement(
+				'div',
+				{ className: 'researchers' },
+				React.createElement(
+					'h2',
+					{ className: 'researchers-header' },
+					'Researchers: ',
+					React.createElement(
+						'span',
+						{ className: 'data' },
+						this.props.n
+					)
+				),
+				React.createElement(Slider, { bindActive: function bindActive(v) {
+						return _this8.setState({ active: v });
+					}, i: this.state.active }),
+				React.createElement(
+					ContentSwitch,
+					{ active: this.state.active },
+					React.createElement(ResearcherInfo, { data: researchers[0] }),
+					React.createElement(ResearcherInfo, { data: researchers[1] })
+				),
+				React.createElement(
+					InfoPannel,
+					{ title: 'International Students', n: '2,000', type: 'left' },
+					React.createElement(
+						'p',
+						null,
+						React.createElement('img', { src: 'http://zblogged.com/wp-content/uploads/2015/11/17.jpg' }),
+						'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae, veniam magnam qui neque cum ea velit porro autem earum. A illum numquam praesentium id deserunt quis, voluptatem error aut.'
+					)
+				),
+				React.createElement(
+					InfoPannel,
+					{ title: 'Study abroad programs', n: '6', type: 'right' },
+					React.createElement(
+						'p',
+						null,
+						React.createElement('img', { src: 'http://zblogged.com/wp-content/uploads/2015/11/17.jpg' }),
+						'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Iure vitae, veniam magnam qui neque cum ea velit porro autem earum. A illum numquam praesentium id deserunt quis, voluptatem error aut.'
+					)
+				)
+			);
+		}
+	}]);
+
+	return Researchers;
+})(React.Component);
+
+var InfoPannel = (function (_React$Component7) {
+	_inherits(InfoPannel, _React$Component7);
+
+	function InfoPannel() {
+		_classCallCheck(this, InfoPannel);
+
+		return _possibleConstructorReturn(this, Object.getPrototypeOf(InfoPannel).apply(this, arguments));
+	}
+
+	_createClass(InfoPannel, [{
+		key: 'render',
+		value: function render() {
+			return React.createElement(
+				'section',
+				{ className: "infoPannel " + this.props.type },
+				React.createElement(
+					'h3',
+					null,
+					this.props.title,
+					' ',
+					React.createElement(
+						'span',
+						{ className: 'data' },
+						this.props.n
+					)
+				),
+				this.props.children
+			);
+		}
+	}]);
+
+	return InfoPannel;
+})(React.Component);
+
+var CountryCard = (function (_React$Component8) {
+	_inherits(CountryCard, _React$Component8);
+
+	function CountryCard() {
+		var _Object$getPrototypeO3;
+
+		var _temp3, _this10, _ret3;
+
+		_classCallCheck(this, CountryCard);
+
+		for (var _len3 = arguments.length, args = Array(_len3), _key3 = 0; _key3 < _len3; _key3++) {
+			args[_key3] = arguments[_key3];
+		}
+
+		return _ret3 = (_temp3 = (_this10 = _possibleConstructorReturn(this, (_Object$getPrototypeO3 = Object.getPrototypeOf(CountryCard)).call.apply(_Object$getPrototypeO3, [this].concat(args))), _this10), _this10.state = {
+			visable: true
+		}, _this10.close = function (e) {
+			console.log(e);
+			_this10.setState({ visable: false });
+		}, _temp3), _possibleConstructorReturn(_this10, _ret3);
+	}
+
+	_createClass(CountryCard, [{
+		key: 'render',
+		value: function render() {
+			var cardStlye = { display: this.state.visable ? "auto" : "none" };
+			return React.createElement(
+				'div',
+				{ className: this.props.inverted ? "card inverted" : "card", style: cardStlye },
+				React.createElement(CardHeader, { title: 'country name', close: this.close }),
+				React.createElement(
+					'div',
+					{ className: 'card-content' },
+					React.createElement(Researchers, { n: '23' })
+				)
+			);
+		}
+	}]);
+
+	return CountryCard;
+})(React.Component);
+
+CountryCard.defaultProps = {
+	cid: "bar",
+	inverted: true
+};
+
+ReactDOM.render(React.createElement(CountryCard, null), document.getElementById('container'));
 
 },{"react":158,"react-dom":29}],2:[function(require,module,exports){
 (function (process){
