@@ -39,6 +39,7 @@ class Slider extends React.Component{
     );
   }
 };
+
 class CardHeader extends React.Component{
 	render(){
 		return(

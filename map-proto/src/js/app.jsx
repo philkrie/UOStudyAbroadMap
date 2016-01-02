@@ -6,24 +6,42 @@
   var React = require('react');
   var WorldMap = require('./globe/world_map.jsx');
   //Needed for React Developer Tools
-  window.React = React;
+  // window.React = React;
 
   //Render the main app component
-  var App = React.createClass({
+  window.MAPP = React.createClass({
     getInitialState: function() {
-      return {data: "Countries will show up here!"};
+      return {
+        data: "Countries will show up here!",
+        country:"Japan",
+        countryData:{}
+      };
     },
-    componentDidMount: function() {
+    fetchCountryData:function(cname){
+      var self = this;
+      API.onResolution(
+        API.getFacultyProfilesByCname.bind(this,cname),
+        function(v){
+          // var s = self.state;
+          // s.countryData[cname] = v
+          // self.setState(s);
+          console.log(v);
+        }
+      );
+    },
+    componentDidMount:function(){
+      this.fetchCountryData(this.state.country);
       console.log(this.state.data);
     },
     changeCountry: function(country) {
+      this.fetchCountryData(country);
       this.setState({data: country});
     },
     render: function() {
       console.log("rerendered with " + this.state.data);
       return (
         <div>
-          <WorldMap 
+          <WorldMap
             country = {this.state.data}
             changeCountry={ this.changeCountry }
           />
@@ -32,6 +50,18 @@
         );
     }
   });
-  React.render(<App/>, document.body);
+
+  // console.log(App);
+  // console.log(CountrySelector);
+  // console.log(CountryCard);
+  
+  // window.WorldMapFactory = React.createFactory(WorldMap);
+  // window.WorldMap = (WorldMap);
+ jQuery(function(){
+  React.render( 
+    <MAPP/>, 
+    document.getElementById('map')
+  );
+ })
 
 })();

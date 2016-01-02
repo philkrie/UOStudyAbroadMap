@@ -34,7 +34,11 @@ regions[footer] = Footer
 settings[shortcut_module_link] = 0
 
 scripts[] = templates/map/js/when/build/when.js
+scripts[] = templates/map/js/UI/js/dist/main.js
+scripts[] = templates/map/js/api.js
 scripts[] = templates/map/js/index.js
+scripts[] = templates/map/js/map-proto/build/country_data.js
+scripts[] = templates/map/js/map-proto/build/app.js
 
 
 

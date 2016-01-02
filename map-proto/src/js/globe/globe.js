@@ -100,7 +100,7 @@ DAT.Globe = function(container, opts, callback) {
     base_globe = new THREE.Object3D();
     base_globe.scale.set(20, 20, 20);
     scene.add(base_globe);
-    var sea_texture = THREE.ImageUtils.loadTexture('assets/sea.jpg', THREE.UVMapping, function () {
+    var sea_texture = THREE.ImageUtils.loadTexture('https://c1.staticflickr.com/3/2365/1782866925_42339aa1d7_b.jpg', THREE.UVMapping, function () {
         sea_texture.wrapS = THREE.RepeatWrapping;
         sea_texture.wrapT = THREE.RepeatWrapping;
         sea_texture.repeat.set(16, 8);
