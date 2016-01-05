@@ -1,5 +1,9 @@
 baseURL = "http://facultydb.dd:8083/"
 
+if (typeof module !== 'undefined' && module.exports) {
+	when = require('when');
+}
+
 request = function(method, url, cb){
 	var xhr = window.XMLHttpRequest ? new XMLHttpRequest() : new ActiveXObject("Microsoft.XMLHTTP");
 	xhr.onreadystatechange = function(){
@@ -156,5 +160,10 @@ placeImage=function(img){
 	// img.src="http://facultydb.dd:8083/sites/international-faculty.dd/files/4402640608_a9b1594bb6_o.jpg";
 	document.getElementById("map").appendChild(img)
 }
+
+if (typeof module !== 'undefined' && module.exports) {
+	module.exports = API;
+}
+
 
 

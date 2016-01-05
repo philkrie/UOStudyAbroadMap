@@ -1,6 +1,6 @@
 var React = window.React = require('react');
 var ReactDOM = window.ReactDOM = require('react-dom');
-var foo = 'bar';
+var API = window.API = require('../../api.js');
 class Slide extends React.Component{
 	render(){
 		return(

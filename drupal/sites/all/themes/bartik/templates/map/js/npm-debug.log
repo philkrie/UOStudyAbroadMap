@@ -1,0 +1,73 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'install', 'when' ]
+2 info using npm@3.3.6
+3 info using node@v5.0.0
+4 silly loadCurrentTree Starting
+5 silly install loadCurrentTree
+6 silly install readLocalPackageData
+7 silly fetchPackageMetaData when
+8 silly fetchDirectoryPackageData when
+9 silly install normalizeTree
+10 silly loadCurrentTree Finishing
+11 silly loadIdealTree Starting
+12 silly install loadIdealTree
+13 silly cloneCurrentTree Starting
+14 silly install cloneCurrentTreeToIdealTree
+15 silly cloneCurrentTree Finishing
+16 silly loadShrinkwrap Starting
+17 silly install loadShrinkwrap
+18 silly loadShrinkwrap Finishing
+19 silly loadAllDepsIntoIdealTree Starting
+20 silly install loadAllDepsIntoIdealTree
+21 silly resolveWithNewModule when@3.7.7 checking installable status
+22 silly cache add args [ 'when', null ]
+23 verbose cache add spec when
+24 silly cache add parsed spec Result {
+24 silly cache add   raw: 'when',
+24 silly cache add   scope: null,
+24 silly cache add   name: null,
+24 silly cache add   rawSpec: 'when',
+24 silly cache add   spec: '/Users/admin/Desktop/UOStudyAbroadMap/drupal/sites/all/themes/bartik/templates/map/js/when',
+24 silly cache add   type: 'directory' }
+25 verbose addLocalDirectory /Users/admin/.npm/when/3.7.7/package.tgz not in flight; packing
+26 info lifecycle when@3.7.7~prepublish: when@3.7.7
+27 verbose lifecycle when@3.7.7~prepublish: unsafe-perm in lifecycle true
+28 verbose lifecycle when@3.7.7~prepublish: PATH: /usr/local/lib/node_modules/npm/bin/node-gyp-bin:/Users/admin/Desktop/UOStudyAbroadMap/drupal/sites/all/themes/bartik/templates/map/js/when/node_modules/.bin:/usr/local/Cellar/smlnj/110.74/libexec/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Applications/DevDesktop/drush:/Applications/DevDesktop/drush
+29 verbose lifecycle when@3.7.7~prepublish: CWD: /Users/admin/Desktop/UOStudyAbroadMap/drupal/sites/all/themes/bartik/templates/map/js/when
+30 silly lifecycle when@3.7.7~prepublish: Args: [ '-c', 'npm run browserify && npm run uglify' ]
+31 silly lifecycle when@3.7.7~prepublish: Returned: code: 1  signal: null
+32 info lifecycle when@3.7.7~prepublish: Failed to exec prepublish script
+33 error addLocal Could not install /Users/admin/Desktop/UOStudyAbroadMap/drupal/sites/all/themes/bartik/templates/map/js/when
+34 silly rollbackFailedOptional Starting
+35 silly rollbackFailedOptional Finishing
+36 silly runTopLevelLifecycles Starting
+37 silly runTopLevelLifecycles Finishing
+38 silly install printInstalled
+39 verbose stack Error: when@3.7.7 prepublish: `npm run browserify && npm run uglify`
+39 verbose stack Exit status 1
+39 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:233:16)
+39 verbose stack     at emitTwo (events.js:87:13)
+39 verbose stack     at EventEmitter.emit (events.js:172:7)
+39 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+39 verbose stack     at emitTwo (events.js:87:13)
+39 verbose stack     at ChildProcess.emit (events.js:172:7)
+39 verbose stack     at maybeClose (internal/child_process.js:818:16)
+39 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+40 verbose pkgid when@3.7.7
+41 verbose cwd /Users/admin/Desktop/UOStudyAbroadMap/drupal/sites/all/themes/bartik/templates/map/js
+42 error Darwin 14.3.0
+43 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "when"
+44 error node v5.0.0
+45 error npm  v3.3.6
+46 error code ELIFECYCLE
+47 error when@3.7.7 prepublish: `npm run browserify && npm run uglify`
+47 error Exit status 1
+48 error Failed at the when@3.7.7 prepublish script 'npm run browserify && npm run uglify'.
+48 error This is most likely a problem with the when package,
+48 error not with npm itself.
+48 error Tell the author that this fails on your system:
+48 error     npm run browserify && npm run uglify
+48 error You can get their info via:
+48 error     npm owner ls when
+48 error There is likely additional logging output above.
+49 verbose exit [ 1, true ]
