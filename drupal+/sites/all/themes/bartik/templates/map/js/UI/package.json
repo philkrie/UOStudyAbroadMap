@@ -1,0 +1,18 @@
+{
+  "name": "no",
+  "version": "0.0.0",
+  "description": "asdfasdf",
+  "main": "index.js",
+  "dependencies": {
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-stage-0": "^6.3.13",
+    "react-slick": "^0.9.3",
+    "underscore": "^1.8.3"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "watchify -t [ babelify --presets [ es2015 react stage-0] ] js/src/main.js -o js/dist/main.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
